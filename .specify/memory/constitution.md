@@ -1,50 +1,138 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- 
+  ========================================
+  Sync Impact Report
+  ========================================
+  Version Change: 1.0.0 → 1.0.0 (初版)
+  Ratification Date: 2025-12-13
+  
+  Modified Principles:
+  - コード品質 (新規追加)
+  - テスト基準 (新規追加)
+  - ユーザーエクスペリエンス一貫性 (新規追加)
+  
+  Added Sections:
+  - 品質保証・検証プロセス
+  - 開発ワークフロー
+  
+  Templates Updated:
+  - ✅ plan-template.md
+  - ✅ spec-template.md
+  - ✅ tasks-template.md
+  
+  ========================================
+-->
 
-## Core Principles
+# my-sdd-project 憲法
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+本憲法は、プロジェクトの開発基準と品質要件を定義します。全てのチームメンバーはこの憲法に従う義務があります。
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+## コア原則
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### I. コード品質
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+すべてのコードは高い品質基準を満たさなければなりません。これは長期的な保守性、可読性、および信頼性の確保に不可欠です。
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+**非交渉要件**:
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+- **可読性**: コードは自己説明的であり、一般的な命名規則に従わなければならない。変数名、関数名、クラス名は具体的で意図が明確であること
+- **構造性**: 単一責任の原則（SRP）に従う。1つの関数/クラスは1つの目的のみを持つ
+- **複雑性管理**: 循環的複雑度は10以下。複雑な関数は分割を義務付ける
+- **ドキュメント**: 公開API、非自明なアルゴリズム、設計判断は必ずコメント/ドキュメント化する
+- **DRY原則**: 同じコードの繰り返しは許さない。共通部分は関数や共有モジュールに抽出する
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+**品質検証**: コードレビューでは、これらの基準に対する適合性を確認する。自動ツール（リンター、フォーマッター）の導入を推奨。
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### II. テスト基準（非交渉）
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+テスト駆動開発（TDD）はこのプロジェクトの基盤です。全ての新機能、バグ修正、リファクタリングに対してテストが必須です。
 
-## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+**テスト要件**:
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- **TDD必須**: テスト作成 → コード承認 → テスト実行（赤） → 実装 → テスト成功（緑） → リファクタリング。この順序は厳密に遵守する
+- **カバレッジ目標**: 新規コードは最低80%のカバレッジを達成。既存機能の変更時は現在のカバレッジを維持/向上させること
+- **ユニットテスト**: 全ての公開メソッドに対してユニットテストを作成。エッジケースと異常系を含める
+- **統合テスト**: 複数コンポーネント間の相互作用をテストする。特にAPI呼び出し、データベース操作、外部サービス連携時は必須
+- **テスト品質**: テストコードも本体コードと同じ品質基準を適用。テストは保守可能で、再現性があり、明確に検証内容が理解できること
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**テスト実行**: 全プルリクエストをマージする前に、自動テストスイートが全て成功する必要がある。
+
+### III. ユーザーエクスペリエンス（UX）一貫性
+
+全てのユーザーに対して、一貫性のある高品質な体験を提供することが必須です。UI/UXは設計思想から実装まで一貫性を保つ必要があります。
+
+**UX要件**:
+
+- **デザインシステム遵守**: 色、フォント、間隔、コンポーネント動作は定義されたデザインシステムに従う。恣意的な変更は許さない
+- **アクセシビリティ**: WCAG 2.1 AA基準に準拠。スクリーンリーダー対応、キーボード操作対応、色対比の確保を必須とする
+- **反応性と性能**: UI応答時間は100ms以下を目標。ローディング状態、エラーメッセージ、ユーザーフィードバック（視覚的インジケータ）は必ず提供する
+- **ユーザーテスト**: 新機能リリース前にユーザーテストを実施。最低5名以上のユーザーから反応を収集し、設計の妥当性を検証する
+- **ドキュメント**: ユーザー向けドキュメント、チュートリアル、ヘルプは常に最新に保つ。機能追加時は同時にドキュメントを更新すること
+
+**一貫性チェック**: デザイナーとQAエンジニアによる二重確認プロセスを実施。異なるデバイス（モバイル、タブレット、デスクトップ）での表示確認は必須。
+
+## 品質保証・検証プロセス
+
+### コード品質ゲート
+
+- **静的解析**: 全コミットは自動リンター、型チェッカーを通過しなければならない
+- **手動レビュー**: 最低1名のシニアエンジニアによるコードレビューが必須。レビュアーは3つの原則（コード品質、テスト、UX）への適合性を確認する
+- **複雑度分析**: 循環的複雑度やメトリクス分析ツールを使用し、過度に複雑なコードを検出・改善する
+
+### テスト検証ゲート
+
+- **自動テスト実行**: CI/CDパイプラインは全テストの成功が必須条件
+- **カバレッジ確認**: カバレッジレポートは全プルリクエストに添付。要件を下回る場合は承認しない
+- **手動テスト**: 特に重要な機能やリスク高めの変更については、QAエンジニアによる手動テストを実施
+
+### UX検証ゲート
+
+- **デザインレビュー**: 実装前後でデザイナーがUIをチェック。デザインシステムへの準拠を確認
+- **ユーザーテスト**: リリース前にターゲットユーザーとの検証テストを実施
+- **アクセシビリティテスト**: 自動ツールと手動確認で、アクセシビリティ要件を検証
+
+## 開発ワークフロー
+
+### フェーズ0 - 要件整理
+
+- ユーザーストーリーを優先度付けで作成（P1, P2, P3）
+- 各ストーリーが独立してテスト可能であることを確認
+
+### フェーズ1 - 設計・プロトタイプ
+
+- テストケースを設計（TDD）
+- UIモックアップ/プロトタイプ作成
+- 技術アーキテクチャドキュメント整備
+
+### フェーズ2 - 実装
+
+- テスト作成 → テスト失敗確認 → コード実装 → テスト成功 → リファクタリング（TDDサイクル）
+- コードレビュー実施（3つの原則をチェック）
+- UXレビュー実施（デザイナー）
+
+### フェーズ3 - 検証・リリース
+
+- 全テスト成功確認
+- ユーザーテスト実施（問題発見/改善）
+- 本番リリース
+- リリース後のメトリクス監視（バグ報告、ユーザーフィードバック）
+
+## 統治・運営
+
+### 憲法の運用
+
+- この憲法は全ての開発活動において最優先される
+- 例外は、プロジェクトリーダーとシニアエンジニアの合意により、文書化されたうえで承認される
+- 例外承認の記録は、憲法修正履歴に記入される
+
+### 修正プロセス
+
+- 憲法の修正は、チームの合意（最低70%）で実施
+- 修正後は、理由、変更内容、実施日を記録
+- 修正に伴い、関連テンプレート（plan, spec, tasks）を同時に更新
+
+### コンプライアンス確認
+
+- 全プルリクエスト/コード変更時に、3つの原則への準拠を確認
+- 四半期ごとに、プロジェクト全体の品質メトリクスを報告（テストカバレッジ、バグ件数、ユーザー満足度）
+
+**Version**: 1.0.0 | **Ratified**: 2025-12-13 | **Last Amended**: 2025-12-13

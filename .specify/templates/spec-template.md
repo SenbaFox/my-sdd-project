@@ -5,7 +5,12 @@
 **Status**: Draft  
 **Input**: User description: "$ARGUMENTS"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing *(mandatory - 憲法準拠)*
+
+**憲法準拠確認**: 全ユーザーストーリーは、以下の原則に準拠する必要があります:
+- **コード品質**: 各機能の実装はコード品質原則を満たすこと
+- **テスト基準**: 各ストーリーは、独立してテスト可能かつ80%以上のカバレッジを達成すること
+- **UX一貫性**: UIはデザインシステムに準拠し、アクセシビリティを考慮すること
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.

@@ -27,9 +27,15 @@
 **Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
-## Constitution Check
+## Constitution Check / 憲法準拠確認
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+
+**憲法の3つの原則に対する準拠性を確認する**:
+
+- [ ] **コード品質**: 実装予定のアーキテクチャはSRP原則に従うか？複雑性管理計画はあるか？
+- [ ] **テスト基準**: テスト駆動開発のための準備（テスト環境、フレームワーク）は整備されているか？80%カバレッジ達成計画はあるか？
+- [ ] **UX一貫性**: UIの設計がデザインシステムに従うか？アクセシビリティレビュー計画はあるか？
 
 [Gates determined based on constitution file]
 

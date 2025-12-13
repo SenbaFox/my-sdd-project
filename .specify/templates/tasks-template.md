@@ -3,12 +3,17 @@
 description: "Task list template for feature implementation"
 ---
 
-# Tasks: [FEATURE NAME]
+# Tasks: [FEATURE NAME] / タスク: [FEATURE NAME]
 
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
+**テスト**: 以下の例にはテストタスクが含まれます。**テストは必須です（憲法のテスト基準原則に準拠）** - 全ての機能実装には対応するテストタスクを作成してください。80%以上のカバレッジ達成が目標です。
+
+**憲法準拠**: 全タスクは以下の原則に従う必要があります:
+- **コード品質**: コード実装タスクは、単一責任の原則とDRY原則を考慮すること
+- **テスト基準**: テストカバレッジ80%以上達成が必須。TDDサイクル（テスト作成→失敗確認→実装→テスト成功→リファクタリング）で実装すること
+- **UX一貫性**: UI実装タスクには、デザインレビューとアクセシビリティテストを含めること
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 

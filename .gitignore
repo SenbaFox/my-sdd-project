@@ -1,0 +1,31 @@
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Build
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test/coverage
+coverage/
+
+# Logs
+logs/
+*.log
+
+# Local env
+.env
+
+# Web libs
+web/lib/
+
+# Generated
+*.cache
