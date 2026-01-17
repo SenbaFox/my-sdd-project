@@ -5,6 +5,7 @@ export class GameState {
     this.lives = opts.lives || 3;
     this.blocksDestroyed = 0;
     this.isPaused = false;
+    this.ballSpeedMultiplier = 1.0;
   }
   incrementScore() {
     this.score += 1;

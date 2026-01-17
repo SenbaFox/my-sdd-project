@@ -76,6 +76,7 @@ export class GameEngine {
           this.state.incrementScore();
           if (this.state.checkLevelUp()) {
             this.state.levelUp();
+            this.state.ballSpeedMultiplier *= 1.1;
             this.ball.speedUp(1.1);
           }
         }
@@ -86,6 +87,8 @@ export class GameEngine {
     if (this.ball.y - this.ball.radius > this.canvas.height) {
       this.state.loseLife();
       this.ball.reset(this.canvas.width / 2, this.canvas.height - 60);
+      // Re-apply current speed multiplier
+      this.ball.speedUp(this.state.ballSpeedMultiplier);
     }
 
     // emit HUD
