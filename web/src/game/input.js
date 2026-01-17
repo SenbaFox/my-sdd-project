@@ -3,6 +3,7 @@ export class Input {
     this.left = false;
     this.right = false;
     this.pausePressed = false;
+    this.resetPressed = false;
     document.addEventListener("keydown", (e) => this._onKeyDown(e));
     document.addEventListener("keyup", (e) => this._onKeyUp(e));
   }
@@ -11,6 +12,9 @@ export class Input {
     if (e.key === "ArrowRight" || e.key === "d") this.right = true;
     if (e.key === "p" || e.key === "P") {
       this.pausePressed = true;
+    }
+    if (e.key === "r" || e.key === "R") {
+      this.resetPressed = true;
     }
   }
   _onKeyUp(e) {

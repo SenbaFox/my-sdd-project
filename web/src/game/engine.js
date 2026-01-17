@@ -29,7 +29,22 @@ export class GameEngine {
     this.loop.stop();
   }
 
+  reset() {
+    this.state = new GameState(this.opts);
+    this.blocks = createBlocks(this.opts.rows, this.opts.cols, this.canvas.width);
+    this.paddle = new Paddle(this.canvas.width / 2 - 50, this.canvas.height - 40, 100, 16, 6, this.canvas.width);
+    this.ball = new Ball(this.canvas.width / 2, this.canvas.height - 60, 6);
+    this._gameOverEmitted = false;
+  }
+
   update(dt) {
+    // check reset input first
+    if (this.input.resetPressed && (this.state.isGameOver || this.state.isGameClear)) {
+      this.input.resetPressed = false;
+      this.emit("resetRequested");
+      return;
+    }
+
     // check pause input first (even if paused)
     if (this.input.pausePressed) {
       this.state.togglePause();
@@ -44,8 +59,8 @@ export class GameEngine {
       return;
     }
 
-    // skip game update if paused or game over
-    if (this.state.isPaused || this.state.isGameOver) {
+    // skip game update if paused, game over, or game clear
+    if (this.state.isPaused || this.state.isGameOver || this.state.isGameClear) {
       this.render();
       return;
     }
@@ -91,6 +106,22 @@ export class GameEngine {
       this.ball.speedUp(this.state.ballSpeedMultiplier);
     }
 
+    // check if all blocks destroyed
+    const allBlocksDestroyed = this.blocks.every((b) => b.destroyed);
+    if (allBlocksDestroyed) {
+      this.state.isGameClear = true;
+      this.emit("gameEnd", { type: "clear", score: this.state.score, level: this.state.level });
+    }
+
+    // emit game over event if game just ended
+    if (this.state.isGameOver && this.state.lives === 0) {
+      // Check if we haven't already emitted
+      if (!this._gameOverEmitted) {
+        this._gameOverEmitted = true;
+        this.emit("gameEnd", { type: "gameover", score: this.state.score, level: this.state.level });
+      }
+    }
+
     // emit HUD
     this.emit("updateHUD", {
       score: this.state.score,
@@ -107,7 +138,9 @@ export class GameEngine {
     this.renderer.renderBlocks(this.blocks);
     this.renderer.renderPaddle(this.paddle);
     this.renderer.renderBall(this.ball);
-    if (this.state.isGameOver) {
+    if (this.state.isGameClear) {
+      this.renderer.renderGameClear(this.canvas.width, this.canvas.height);
+    } else if (this.state.isGameOver) {
       this.renderer.renderGameOver(this.canvas.width, this.canvas.height);
     } else if (this.state.isPaused) {
       this.renderer.renderPauseText(this.canvas.width, this.canvas.height);

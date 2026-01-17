@@ -40,17 +40,13 @@ export class Renderer {
     this.ctx.fillText("Press P to resume", width / 2, height / 2 + 40);
   }
   renderGameOver(width, height) {
-    // Semi-transparent overlay
-    this.ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+    // Semi-transparent overlay only
+    this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
     this.ctx.fillRect(0, 0, width, height);
-    // Game Over text
-    this.ctx.fillStyle = "#f44";
-    this.ctx.font = "bold 64px system-ui";
-    this.ctx.textAlign = "center";
-    this.ctx.textBaseline = "middle";
-    this.ctx.fillText("GAME OVER", width / 2, height / 2 - 40);
-    this.ctx.fillStyle = "#fff";
-    this.ctx.font = "20px system-ui";
-    this.ctx.fillText("Refresh the page to play again", width / 2, height / 2 + 40);
+  }
+  renderGameClear(width, height, score, level, elapsedSeconds) {
+    // Semi-transparent overlay only
+    this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+    this.ctx.fillRect(0, 0, width, height);
   }
 }
