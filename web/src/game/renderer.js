@@ -26,4 +26,17 @@ export class Renderer {
     this.ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
     this.ctx.fill();
   }
+  renderPauseText(width, height) {
+    // Semi-transparent overlay
+    this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+    this.ctx.fillRect(0, 0, width, height);
+    // Pause text
+    this.ctx.fillStyle = "#fff";
+    this.ctx.font = "bold 48px system-ui";
+    this.ctx.textAlign = "center";
+    this.ctx.textBaseline = "middle";
+    this.ctx.fillText("PAUSED", width / 2, height / 2 - 40);
+    this.ctx.font = "16px system-ui";
+    this.ctx.fillText("Press P to resume", width / 2, height / 2 + 40);
+  }
 }

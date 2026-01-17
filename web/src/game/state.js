@@ -4,6 +4,7 @@ export class GameState {
     this.level = 1;
     this.lives = opts.lives || 3;
     this.blocksDestroyed = 0;
+    this.isPaused = false;
   }
   incrementScore() {
     this.score += 1;
@@ -17,5 +18,8 @@ export class GameState {
   }
   loseLife() {
     this.lives -= 1;
+  }
+  togglePause() {
+    this.isPaused = !this.isPaused;
   }
 }

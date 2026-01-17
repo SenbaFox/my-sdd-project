@@ -30,6 +30,26 @@ export class GameEngine {
   }
 
   update(dt) {
+    // check pause input first (even if paused)
+    if (this.input.pausePressed) {
+      this.state.togglePause();
+      this.input.pausePressed = false;
+      this.emit("updateHUD", {
+        score: this.state.score,
+        level: this.state.level,
+        lives: this.state.lives,
+      });
+      // Always render after pause toggle
+      this.render();
+      return;
+    }
+
+    // skip game update if paused
+    if (this.state.isPaused) {
+      this.render();
+      return;
+    }
+
     // update inputs
     this.paddle.update(this.input, dt);
     this.ball.update(dt);
@@ -76,10 +96,17 @@ export class GameEngine {
     });
 
     // render
+    this.render();
+  }
+
+  render() {
     this.renderer.clear(this.canvas.width, this.canvas.height);
     this.renderer.renderBlocks(this.blocks);
     this.renderer.renderPaddle(this.paddle);
     this.renderer.renderBall(this.ball);
+    if (this.state.isPaused) {
+      this.renderer.renderPauseText(this.canvas.width, this.canvas.height);
+    }
   }
 
   on(name, fn) {
