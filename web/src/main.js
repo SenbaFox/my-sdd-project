@@ -15,8 +15,13 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("score").textContent = `Score: ${score}`;
     document.getElementById("level").textContent = `Level: ${level}`;
     document.getElementById("lives").textContent = `Lives: ${lives}`;
-    // Update pause indicator
-    const pauseHint = engine.state.isPaused ? " [PAUSED]" : "";
-    document.title = `Breakout - my-sdd-project${pauseHint}`;
+    // Update pause/game over indicator
+    let suffix = "";
+    if (engine.state.isGameOver) {
+      suffix = " [GAME OVER]";
+    } else if (engine.state.isPaused) {
+      suffix = " [PAUSED]";
+    }
+    document.title = `Breakout - my-sdd-project${suffix}`;
   });
 });

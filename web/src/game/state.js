@@ -6,6 +6,7 @@ export class GameState {
     this.blocksDestroyed = 0;
     this.isPaused = false;
     this.ballSpeedMultiplier = 1.0;
+    this.isGameOver = false;
   }
   incrementScore() {
     this.score += 1;
@@ -19,6 +20,9 @@ export class GameState {
   }
   loseLife() {
     this.lives -= 1;
+    if (this.lives <= 0) {
+      this.isGameOver = true;
+    }
   }
   togglePause() {
     this.isPaused = !this.isPaused;

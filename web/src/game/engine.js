@@ -44,8 +44,8 @@ export class GameEngine {
       return;
     }
 
-    // skip game update if paused
-    if (this.state.isPaused) {
+    // skip game update if paused or game over
+    if (this.state.isPaused || this.state.isGameOver) {
       this.render();
       return;
     }
@@ -107,7 +107,9 @@ export class GameEngine {
     this.renderer.renderBlocks(this.blocks);
     this.renderer.renderPaddle(this.paddle);
     this.renderer.renderBall(this.ball);
-    if (this.state.isPaused) {
+    if (this.state.isGameOver) {
+      this.renderer.renderGameOver(this.canvas.width, this.canvas.height);
+    } else if (this.state.isPaused) {
       this.renderer.renderPauseText(this.canvas.width, this.canvas.height);
     }
   }
