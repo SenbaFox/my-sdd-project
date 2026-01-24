@@ -9,55 +9,55 @@ description: "Auto-generated tasks for Breakout feature"
 
 ## フェーズ 1: Setup (共有インフラ)
 
-- [ ] T001 Create project web skeleton: create `web/index.html`, `web/styles.css`, `web/src/main.js`, `web/src/game/engine.js`, `web/src/game/physics.js`, `web/src/game/collision.js`, `web/README.md`
-- [ ] T002 [P] Initialize `package.json` for dev tooling and scripts (root `package.json`)
-- [ ] T003 [P] Add linters/formatters: configure `.eslintrc.json` and `.prettierrc` at repo root
-- [ ] T004 [P] Add test runner and config: `jest.config.js` and `tests/setup.js`
-- [ ] T005 Create CI workflow: `.github/workflows/ci.yml` to run lint + tests on PRs
+- [X] T001 Create project web skeleton: create `web/index.html`, `web/styles.css`, `web/src/main.js`, `web/src/game/engine.js`, `web/src/game/physics.js`, `web/src/game/collision.js`, `web/README.md`
+- [X] T002 [P] Initialize `package.json` for dev tooling and scripts (root `package.json`)
+- [X] T003 [P] Add linters/formatters: configure `.eslintrc.json` and `.prettierrc` at repo root
+- [X] T004 [P] Add test runner and config: `jest.config.js` and `tests/setup.js`
+- [X] T005 Create CI workflow: `.github/workflows/ci.yml` to run lint + tests on PRs
 
 ## フェーズ 2: Foundational (ブロック/ゲーム基盤)
 
-- [ ] T006 Create `web/src/game/state.js` for `GameState` model and initializers
-- [ ] T007 Create `web/src/game/entities/block.js` (Block entity: position, health)
-- [ ] T008 Create `web/src/game/entities/ball.js` (Ball entity: position, velocity, update)
-- [ ] T009 Create `web/src/game/entities/paddle.js` (Paddle entity: input handling)
-- [ ] T010 [P] Implement `web/src/game/renderer.js` (Canvas drawing abstraction)
-- [ ] T011 Implement `web/src/game/loop.js` (DeltaTime-based game loop)
-- [ ] T012 Implement `web/src/game/input.js` (keyboard input abstraction and unit-testable API)
-- [ ] T013 Add basic styles and responsive layout: `web/styles.css`
+- [X] T006 Create `web/src/game/state.js` for `GameState` model and initializers
+- [X] T007 Create `web/src/game/entities/block.js` (Block entity: position, health)
+- [X] T008 Create `web/src/game/entities/ball.js` (Ball entity: position, velocity, update)
+- [X] T009 Create `web/src/game/entities/paddle.js` (Paddle entity: input handling)
+- [X] T010 [P] Implement `web/src/game/renderer.js` (Canvas drawing abstraction)
+- [X] T011 Implement `web/src/game/loop.js` (DeltaTime-based game loop)
+- [X] T012 Implement `web/src/game/input.js` (keyboard input abstraction and unit-testable API)
+- [X] T013 Add basic styles and responsive layout: `web/styles.css`
 
 ## フェーズ 3: User Story Implementation (優先度順)
 
 ### Phase 3.1 - [US1] ゲーム画面の表示 (P1)
 
-- [ ] T014 [US1] Initialize scene and draw 8x8 block grid in `web/src/game/scene.js`
-- [ ] T015 [US1] Render UI overlays (score/lives/level) in `web/src/game/ui.js`
-- [ ] T016 [US1] Add accessibility attributes and color-contrast verification notes in `web/index.html` and `web/styles.css`
+- [X] T014 [US1] Initialize scene and draw 8x8 block grid in `web/src/game/scene.js`
+- [X] T015 [US1] Render UI overlays (score/lives/level) in `web/src/game/ui.js`
+- [X] T016 [US1] Add accessibility attributes and color-contrast verification notes in `web/index.html` and `web/styles.css`
 
 ### Phase 3.2 - [US2] ボード操作 (P1)
 
-- [ ] T017 [US2] Implement paddle movement API in `web/src/game/entities/paddle.js`
-- [ ] T018 [US2] Wire input to paddle and add unit tests in `tests/unit/paddle.test.js`
-- [ ] T019 [US2] Ensure paddle remains within bounds (logic in `web/src/game/entities/paddle.js`)
+- [X] T017 [US2] Implement paddle movement API in `web/src/game/entities/paddle.js`
+- [X] T018 [US2] Wire input to paddle and add unit tests in `tests/unit/paddle.test.js`
+- [X] T019 [US2] Ensure paddle remains within bounds (logic in `web/src/game/entities/paddle.js`)
 
 ### Phase 3.3 - [US3] ボール物理演算 (P1)
 
-- [ ] T020 [US3] Implement ball update and basic physics in `web/src/game/entities/ball.js`
-- [ ] T021 [US3] Add collision detection (circle-rect) in `web/src/game/collision.js` and unit tests `tests/unit/collision.test.js`
-- [ ] T022 [US3] Integrate `ball` and `loop` to simulate movement; add integration test `tests/integration/ball_loop.test.js`
+- [X] T020 [US3] Implement ball update and basic physics in `web/src/game/entities/ball.js`
+- [X] T021 [US3] Add collision detection (circle-rect) in `web/src/game/collision.js` and unit tests `tests/unit/collision.test.js`
+- [X] T022 [US3] Integrate `ball` and `loop` to simulate movement; add integration test `tests/integration/ball_loop.test.js`
 
 ### Phase 3.4 - [US4] ブロック破壊とダメージシステム (P1)
 
-- [ ] T023 [US4] Implement block damage counter logic in `web/src/game/entities/block.js`
-- [ ] T024 [US4] Update collision handler to increment block damage and remove block at health==0 in `web/src/game/collision.js`
-- [ ] T025 [US4] Add unit tests for block damage/removal in `tests/unit/block.test.js`
-- [ ] T026 [US4] Visual damage state (色/エフェクト) implemented in `web/src/game/renderer.js` and `web/styles.css`
+- [X] T023 [US4] Implement block damage counter logic in `web/src/game/entities/block.js`
+- [X] T024 [US4] Update collision handler to increment block damage and remove block at health==0 in `web/src/game/collision.js`
+- [X] T025 [US4] Add unit tests for block damage/removal in `tests/unit/block.test.js`
+- [X] T026 [US4] Visual damage state (色/エフェクト) implemented in `web/src/game/renderer.js` and `web/styles.css`
 
 ### Phase 3.5 - [US7] ライフシステムとゲームオーバー (P1)
 
-- [ ] T027 [US7] Implement life decrement and ball reset logic in `web/src/game/state.js`
-- [ ] T028 [US7] Create `web/src/game/screens/gameover.js` and `web/src/game/screens/cleared.js` UI states
-- [ ] T029 [US7] Add unit/integration tests for lives and game-over transition in `tests/integration/lives_gameover.test.js`
+- [X] T027 [US7] Implement life decrement and ball reset logic in `web/src/game/state.js`
+- [X] T028 [US7] Create `web/src/game/screens/gameover.js` and `web/src/game/screens/cleared.js` UI states
+- [X] T029 [US7] Add unit/integration tests for lives and game-over transition in `tests/integration/lives_gameover.test.js`
 
 ### Phase 3.6 - [US5] スコアシステムと累積スコア表示 (P2)
 

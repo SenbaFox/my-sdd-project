@@ -10,7 +10,7 @@ export class GameState {
     this.isGameClear = false;
     this.startTime = Date.now();
   }
-  
+
   getElapsedTime() {
     // If game is over or cleared, return frozen time
     if (this.isGameOver || this.isGameClear) {

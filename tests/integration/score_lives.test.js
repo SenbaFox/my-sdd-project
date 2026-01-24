@@ -8,9 +8,9 @@ test('destroying a block twice increments score and ball falling decrements live
   };
   const canvas = { width: 400, height: 300, getContext: ()=>fakeCtx };
 
-  const engine = new GameEngine(canvas, {rows:1, cols:1, lives:3});
-  // ensure single block
-  expect(engine.blocks.length).toBe(1);
+  // Use 2x2 blocks to avoid game clear after one block destruction
+  const engine = new GameEngine(canvas, {rows:2, cols:2, lives:3});
+  expect(engine.blocks.length).toBe(4);
   const block = engine.blocks[0];
 
   // stop ball movement and position it over the block

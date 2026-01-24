@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
   const overlay = document.getElementById("overlay");
   const restartButton = document.getElementById("restart-button");
-  
+
   canvas.focus();
   const engine = new GameEngine(canvas, {
     rows: 8,
@@ -35,13 +35,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const elapsedTime = engine.state.getElapsedTime();
     const minutes = Math.floor(elapsedTime / 60);
     const seconds = elapsedTime % 60;
-    const timeStr = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    
+    const timeStr = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
     const overlay = document.getElementById("overlay");
     const gameEndContent = document.getElementById("game-end-content");
     const endTitle = document.getElementById("end-title");
     const endStats = document.getElementById("end-stats");
-    
+
     if (type === "clear") {
       endTitle.textContent = "Congratulations!";
       endStats.innerHTML = `
@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
       `;
       gameEndContent.className = "game-end-content gameover";
     }
-    
+
     overlay.classList.remove("hidden");
     canvas.blur();
   });

@@ -44,7 +44,7 @@ export class Renderer {
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
     this.ctx.fillRect(0, 0, width, height);
   }
-  renderGameClear(width, height, score, level, elapsedSeconds) {
+  renderGameClear(width, height) {
     // Semi-transparent overlay only
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
     this.ctx.fillRect(0, 0, width, height);

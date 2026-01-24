@@ -32,7 +32,14 @@ export class GameEngine {
   reset() {
     this.state = new GameState(this.opts);
     this.blocks = createBlocks(this.opts.rows, this.opts.cols, this.canvas.width);
-    this.paddle = new Paddle(this.canvas.width / 2 - 50, this.canvas.height - 40, 100, 16, 6, this.canvas.width);
+    this.paddle = new Paddle(
+      this.canvas.width / 2 - 50,
+      this.canvas.height - 40,
+      100,
+      16,
+      6,
+      this.canvas.width
+    );
     this.ball = new Ball(this.canvas.width / 2, this.canvas.height - 60, 6);
     this._gameOverEmitted = false;
   }
@@ -118,7 +125,11 @@ export class GameEngine {
       // Check if we haven't already emitted
       if (!this._gameOverEmitted) {
         this._gameOverEmitted = true;
-        this.emit("gameEnd", { type: "gameover", score: this.state.score, level: this.state.level });
+        this.emit("gameEnd", {
+          type: "gameover",
+          score: this.state.score,
+          level: this.state.level,
+        });
       }
     }
 
